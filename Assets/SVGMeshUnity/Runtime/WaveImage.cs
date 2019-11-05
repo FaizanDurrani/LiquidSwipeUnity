@@ -9,48 +9,89 @@ namespace SVGMeshUnity
     {
         // https://github.com/mattdesl/adaptive-bezier-curve
 
-        [SerializeField, Range(0f, 1f)] private float waveCenterY;
-        [SerializeField, Range(0f, 1f)] private float waveHorRadius, waveVertRadius, sideWidth;
+        [SerializeField, Range(0f, 1f)] private float _waveHorRadius, _waveVertRadius, _sideWidth, _waveCenterY;
         private SVGData _data;
 
-        private static WorkBufferPool WorkBufferPool = new WorkBufferPool();
-        private MeshData MeshData = new MeshData();
-        private BezierToVertex BezierToVertex;
-        private Triangulation Triangulation;
+        private static readonly WorkBufferPool _workBufferPool = new WorkBufferPool();
+        private readonly MeshData _meshData = new MeshData();
+        private BezierToVertex _bezierToVertex;
+        private Triangulation _triangulation;
+
+        public float WaveCenterY
+        {
+            get { return _waveCenterY; }
+            set
+            {
+                _waveCenterY = value;
+                SetAllDirty();
+            }
+        }
+
+        public float WaveHorRadius
+        {
+            get { return _waveHorRadius; }
+            set
+            {
+                _waveHorRadius = value;
+                SetAllDirty();
+            }
+        }
+
+        public float WaveVertRadius
+        {
+            get { return _waveVertRadius; }
+            set
+            {
+                _waveVertRadius = value;
+                SetAllDirty();
+            }
+        }
+
+        public float SideWidth
+        {
+            get { return _sideWidth; }
+            set
+            {
+                _sideWidth = value;
+                SetAllDirty();
+            }
+        }
 
         protected override void OnPopulateMesh(VertexHelper vh)
         {
-            if (BezierToVertex == null)
-                BezierToVertex = new BezierToVertex
+            if (_bezierToVertex == null)
+                _bezierToVertex = new BezierToVertex
                 {
-                    WorkBufferPool = WorkBufferPool,
+                    WorkBufferPool = _workBufferPool,
                     Scale = 1
                 };
 
-            if (Triangulation == null)
-                Triangulation = new Triangulation
+            if (_triangulation == null)
+                _triangulation = new Triangulation
                 {
                     Delaunay = false,
                     Interior = true,
                     Exterior = false,
                     Infinity = false,
-                    WorkBufferPool = WorkBufferPool
+                    WorkBufferPool = _workBufferPool
                 };
 
 
-            var selfRect = ((RectTransform) transform).rect;
+            var selfRectTransform = (RectTransform) transform;
+            var selfRect = selfRectTransform.rect;
+            var offset = new Vector2(-selfRectTransform.pivot.x * selfRect.width,
+                (1 - selfRectTransform.pivot.y) * selfRect.height);
             var svgData = BuildWave(selfRect,
-                waveCenterY * selfRect.height,
-                waveHorRadius * selfRect.width,
-                waveVertRadius * selfRect.height,
-                sideWidth * selfRect.width);
+                _waveCenterY * selfRect.height,
+                _waveHorRadius * selfRect.width,
+                _waveVertRadius * selfRect.height,
+                _sideWidth * selfRect.width);
+            _meshData.Clear();
+            _bezierToVertex.GetContours(svgData, _meshData);
+            _triangulation.BuildTriangles(_meshData);
 
-            MeshData.Clear();
-            BezierToVertex.GetContours(svgData, MeshData);
-            Triangulation.BuildTriangles(MeshData);
-
-            MeshData.MakeUnityFriendly();
-            MeshData.Upload(vh, color);
+            _meshData.MakeUnityFriendly();
+            _meshData.Upload(vh, offset, color);
         }
 
         private static SVGData BuildWave(Rect bounds, float waveCenterY, float waveHorRadius, float waveVertRadius,
@@ -59,14 +100,14 @@ namespace SVGMeshUnity
             var rect = bounds;
             var path = new SVGData();
             var maskWidth = rect.width - sideWidth;
-            //path.Move(new Vector2(maskWidth - sideWidth, 0f - waveVertRadius * 2));
-            //path.Line(new Vector2(0f, 0f - waveVertRadius * 2));
-            //path.Line(new Vector2(0f, rect.height + waveVertRadius * 2));
-            //path.Line(new Vector2(maskWidth, rect.height + waveVertRadius * 2));
-
             var curveStartY = waveCenterY + waveVertRadius;
 
-            path.Move(new Vector2(maskWidth, curveStartY));
+            path.Move(new Vector2(maskWidth - sideWidth, 0f - waveVertRadius * 2));
+            path.Line(new Vector2(0f - waveHorRadius - sideWidth, 0f - waveVertRadius * 2));
+            path.Line(new Vector2(0f - waveHorRadius - sideWidth, rect.height + waveVertRadius * 2));
+            path.Line(new Vector2(maskWidth, rect.height + waveVertRadius * 2));
+
+            path.Line(new Vector2(maskWidth, curveStartY));
 
             path.CurveOther(
                 new Vector2(maskWidth - waveHorRadius * 0.1561501458f, curveStartY - waveVertRadius * 0.3322374268f),
@@ -128,7 +169,7 @@ namespace SVGMeshUnity
                 new Vector2(maskWidth, curveStartY - waveVertRadius * 1.8709256829f)
             );
 
-            //path.Line(new Vector2(maskWidth, 0f - waveVertRadius * 2));
+            path.Line(new Vector2(maskWidth, 0f - waveVertRadius * 2));
             return path;
         }
     }

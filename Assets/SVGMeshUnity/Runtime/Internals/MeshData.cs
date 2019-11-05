@@ -119,13 +119,13 @@ namespace SVGMeshUnity.Internals
             m.RecalculateNormals();
         }
         
-        public void Upload(VertexHelper m, Color32 color)
+        public void Upload(VertexHelper m, Vector3 offset, Color32 color)
         {
             m.Clear();
 
             foreach (var vertex in Vertices)
             {
-                m.AddVert(vertex, color, vertex);
+                m.AddVert(vertex + offset, color, vertex + offset);
             }
 
             for (var i = 0; i < Triangles.Count; i+=3)

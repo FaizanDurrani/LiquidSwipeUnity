@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="996ce96a-3a5b-456b-95e1-aaf5e99f0e92" name="Default Changelist" comment="" />
+    <list default="true" id="996ce96a-3a5b-456b-95e1-aaf5e99f0e92" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LiquidSwipe/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LiquidSwipe/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LiquidSwipe/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LiquidSwipe/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LiquidSwipe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LiquidSwipe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SVGMeshUnity/Runtime/Internals/MeshData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SVGMeshUnity/Runtime/Internals/MeshData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SVGMeshUnity/Runtime/WaveImage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SVGMeshUnity/Runtime/WaveImage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LiquidSwipe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LiquidSwipe.cs" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/SVGMeshUnity/Runtime/Internals/BezierToVertex.cs" root0="FORCE_HIGHLIGHTING" />
@@ -30,11 +41,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/SVGMeshUnity/Runtime/SVGData.cs" />
-        <option value="$PROJECT_DIR$/Assets/SVGMeshUnity/Runtime/Internals/MeshData.cs" />
         <option value="$PROJECT_DIR$/Assets/SVGMeshUnity/Runtime/SVGMesh.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wave.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/LiquidSwipe.cs" />
+        <option value="$PROJECT_DIR$/Assets/SVGMeshUnity/Runtime/Internals/MeshData.cs" />
         <option value="$PROJECT_DIR$/Assets/SVGMeshUnity/Runtime/WaveImage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LiquidSwipe.cs" />
       </list>
     </option>
   </component>
@@ -91,6 +102,7 @@
       <updated>1572776483728</updated>
       <workItem from="1572776488172" duration="10983000" />
       <workItem from="1572899167655" duration="2136000" />
+      <workItem from="1572950853273" duration="4992000" />
     </task>
     <servers />
   </component>
@@ -99,6 +111,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
   </component>

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Demigiant" t="Include">
@@ -89,6 +90,11 @@
         <e p="Scripts" t="Include">
           <e p="LiquidSwipe.cs" t="Include" />
           <e p="Wave.cs" t="Include" />
+        </e>
+        <e p="SnapAnchors" t="Include">
+          <e p="Editor" t="Include">
+            <e p="SnapAnchorsEditor.cs" t="Include" />
+          </e>
         </e>
         <e p="SVGMeshUnity" t="Include">
           <e p="Runtime" t="Include">
